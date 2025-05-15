@@ -4,8 +4,8 @@ import { useId } from "react";
 import * as Yup from "yup";
 import { FaUser, FaPhone } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
 import { nanoid } from "nanoid";
+import { addContacts } from "../../redux/contactsOps";
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,7 +28,7 @@ function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ id: nanoid(), ...values })); // Ensure we add an `id`
+    dispatch(addContacts({ id: nanoid(), ...values })); // Ensure we add an `id`
     actions.resetForm(); // Reset form after submit
   };
 
